@@ -28,7 +28,8 @@ export default function Category({auth}) {
         <Head title="AdminCategories" />
 
                     <h2 className="h2_style">Add Category</h2>
-                    <form onSubmit={submit} action  method="POST">
+                    <form action={route('categories.add')} method="post">
+
                         <input id="input_color" value={data.message} onChange={e => setData('message', e.target.value)} name="category" type="text" placeholder="Write category name..."/>
                         <input type="submit" className="btn btn-primary" value="Add Category"/>
                     </form>

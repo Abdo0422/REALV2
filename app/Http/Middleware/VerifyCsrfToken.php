@@ -12,16 +12,8 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        //
+        '/Admincategories/add'
     ];
-    protected function tokenMatch($request)
-{
-    // Disable CSRF protection for the following routes
-    if ($request->routeIs('/Admincategories/add')) {
-        return true;
-    }
 
-    return parent::tokenMatch($request);
-}
 
 }
