@@ -28,9 +28,14 @@ export default function Authenticated({ user, header, children }) {
                                 <NavLink href={route('categories.view')} active={route().current('categories.view')}>
                                     Categories
                                 </NavLink>
-                                <NavLink href={route('products.view')} active={route().current('products.view')}>
-                                    Products
+                                <NavLink href={route('product.form_add')} active={route().current('product.form_add')}>
+                                    Add Product
                                 </NavLink>
+                                <NavLink href={route('products.show')} active={route().current('products.show')}>
+                                    Show Product
+                                </NavLink>
+
+
                             </div>
                         </div>
 
@@ -105,9 +110,23 @@ export default function Authenticated({ user, header, children }) {
                         <ResponsiveNavLink href={route('categories.view')} active={route().current('categories.view')}>
                             Categories
                         </ResponsiveNavLink>
-                        <ResponsiveNavLink href={route('products.view')} active={route().current('products.view')}>
-                                    Products
-                                </ResponsiveNavLink>
+                        <li class="nav-item menu-items">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                            <span class="menu-icon">
+                            <i class="mdi mdi-laptop"></i>
+                            </span>
+                            <span class="menu-title">Products</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="ui-basic">
+                            <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <ResponsiveNavLink href={route('product.form_add')} active={route().current('product.form_add')}>Add Product</ResponsiveNavLink></li>
+                            <li class="nav-item"> <ResponsiveNavLink href={route('products.show')} active={route().current('products.show')}>Show Product</ResponsiveNavLink></li>
+                            </ul>
+                        </div>
+                        </li>
+
+
                     </div>
 
                     <div className="pt-4 pb-1 border-t border-gray-200">

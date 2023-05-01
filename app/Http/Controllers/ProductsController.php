@@ -10,69 +10,74 @@ use Illuminate\Http\RedirectResponse;
 
 class ProductsController extends Controller
 {
-    public function view_products()
+    public function form_add_product()
     {
-
         $categories =Categories::all();
-        return Inertia::render('Admin/Product', [
+        return Inertia::render('Admin/Form_Product', [
             'categories' => $categories,
-        ]);    }
+        ]);
+    }
     public function add_product(Request $request) :RedirectResponse
     {
-
         $pro = new Products;
         $pro->category_id=$request->category_id;
         $pro->title=$request->title;
         $pro->description=$request->description;
         $pro->price=$request->price;
         $pro->quantity=$request->quantity;
+        $filename = $request->file('image')->getClientOriginalName();
+        $path = $request->file('image')->storeAs('products', $filename, 'public');
+        $pro->image = $filename;
+        $categories=Categories::find($request->category_id);
         $pro->save();
-        return redirect(route('products.view'));
+        return redirect(route('products.show'));
     }
 
-    public function show_product()
+    public function show_products()
     {
-        $pro = Product::all();
-        return view('admin.show_product',compact('pro'));
+        $products = Products::all();
+        return Inertia::render('Admin/Show_Products', [
+            'products' => $products->map(function ($product) {
+                return [
+                    'id' => $product->id,
+                    'image' => $product->image,
+                    'title' => $product->title,
+                    'description' => $product->description,
+                    'price' => $product->price,
+                    'quantity' => $product->quantity,
+                    'category' => $product->category ? $product->category->name : null,
+                ];
+            })]);
     }
-    public function show__product($id)
+    public function delete_product($id) : RedirectResponse
     {
-        $pro = Product::whereHas('category', function($query) use ($id) {
-            $query->where('id', $id);
-        })->get();
-
-        return view('admin.show__product',compact('pro'));
-    }
-
-    public function delete_product($id)
-    {
-        $pro =Product::find($id);
+        $pro =Products::find($id);
         $pro->delete();
         return redirect()->back()->with("message0","Product Deleted Successfully ");
     }
-    public function edit_product($id)
+    public function form_edit_product($id)
     {
-      $pro =Product::find($id);
-      $data =Category::all();
-      return view('admin.edit_product',compact('pro','data'));
+      $product =Products::find($id);
+      $categories =Categories::all();
+        return Inertia::render('Admin/FormEdit_Product', [
+        'categories' => $categories,
+        'product' => $product
+
+    ]);
     }
-
-    public function edit_product_confirm(Request $request,$id)
+    public function edit_product(Request $request,$id)
     {
-        $data =Category::all();
-        $data->name=$request->category_name;
-
-        $pro =Product::find($id);
-        $pro->title=$request->title;
-        $pro->description=$request->description;
-        $pro->price=$request->price;
-        $pro->quantity=$request->quantity;
-        $imagename=$request->hidden;
-        $image=$request->image;
-        $fileName = time() . '.' . $request->image->extension();
-        $request->image->storeAs('public/product', $fileName);
-        $pro->image = $fileName;
-      $pro->save();
-      return redirect()->back()->with("message","Product Updated Successsfully");
+        $categories =Categories::all();
+        $categories->name=$request->category_name;
+        $products =Products::find($id);
+        $products->title=$request->title;
+        $products->description=$request->description;
+        $products->price=$request->price;
+        $products->quantity=$request->quantity;
+        $filename = $request->image->getClientOriginalName();
+        $path = $request->image->storeAs('products', $filename, 'public');
+        $products->image = $filename;
+        $products->save();
+      return redirect(route('products.show'));
     }
 }

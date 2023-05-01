@@ -1,24 +1,18 @@
 import React from 'react';
-import { usePage,useForm, Head } from '@inertiajs/react';
+import { usePage, Head } from '@inertiajs/react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { InertiaLink } from '@inertiajs/inertia-react';
-import axios from 'axios';
 
 
-export default function Product({auth}) {
+
+export default function Form_Product({auth}) {
     const { categories  } = usePage().props;
-    const { data, setData, post, processing, reset, errors } = useForm({
-        message: '',
-    });
-    const submit = (e) => {
-        e.preventDefault();
-        post(route('products.add'), { onSuccess: () => reset() });
-    };
+
+
     return (
         <AuthenticatedLayout user={auth.user}>
-            <Head title="AdminCategories" />
-            <h2 class="h2_style">Add Product</h2>
-            <form enctype="multipart/form-data" onSubmit={route('products.add')} method="POST" >
+            <Head title="Form_Product" />
+            <h2 className="h2_style">Add Product</h2>
+            <form encType="multipart/form-data" action={route('product.add')} method="POST" >
             <label>Product Category:</label>
             <select id="input_color" name="category_id" required="">
               <option value="null" selected>Choose</option>
@@ -56,7 +50,9 @@ export default function Product({auth}) {
 
 
 
-                <input type="submit" class="btn btn-primary" value="Add Product"/>
+
+
+                <input type="submit" className="btn btn-primary" value="Add Product"/>
 
       </form>
 
