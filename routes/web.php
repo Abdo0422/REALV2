@@ -19,38 +19,63 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('UserPage', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('userpage');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified','admin'])->name('dashboard');
 
 
 
 
-Route::middleware('auth')->group(function () {
+
+Route::middleware('auth','admin')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/Admincategories', [CategoriesController::class, 'view_categories'])->name('categories.view');
-Route::post('/Admincategories/add', [CategoriesController::class, 'add_category'])->name('categories.add');
-Route::delete('/Admincategories/delete/{id}', [CategoriesController::class, 'delete_category'])->name('categories.delete');
-Route::inertia('/categories', 'Categories/Index')->name('categories');
+Route::get('/Admincategories', [CategoriesController::class, 'view_categories'])
+->middleware('admin')
+->name('categories.view');
 
-Route::get('/form_add_product',[ProductsController::class,'form_add_product'])->name('product.form_add');
-Route::get("/show_products",[ProductsController::class,"show_products"])->name('products.show');
-Route::post("/add_product",[ProductsController::class,"add_product"])->name('product.add');
-Route::delete('/delete_product/{id}',[ProductsController::class,'delete_product'])->name('product.delete');
-Route::get('/form_edit_product/{id}',[ProductsController::class,'form_edit_product'])->name('product.form_edit');
-Route::post('/edit_product/{id}',[ProductsController::class,'edit_product'])->name('product.edit');
+Route::post('/Admincategories/add', [CategoriesController::class, 'add_category'])
+->middleware('admin')
+->name('categories.add');
+
+Route::delete('/Admincategories/delete/{id}', [CategoriesController::class, 'delete_category'])
+->middleware('admin')
+->name('categories.delete');
+
+
+
+Route::get('/form_add_product',[ProductsController::class,'form_add_product'])
+->middleware('admin')
+->name('product.form_add');
+
+Route::get("/show_products",[ProductsController::class,"show_products"])
+->middleware('admin')
+->name('products.show');
+
+Route::post("/add_product",[ProductsController::class,"add_product"])
+->middleware('admin')
+->name('product.add');
+
+Route::delete('/delete_product/{id}',[ProductsController::class,'delete_product'])
+->middleware('admin')
+->name('product.delete');
+
+Route::get('/form_edit_product/{id}',[ProductsController::class,'form_edit_product'])
+->middleware('admin')
+->name('product.form_edit');
+
+Route::post('/edit_product/{id}',[ProductsController::class,'edit_product'])
+->middleware('admin')
+->name('product.edit');
 
 
 
