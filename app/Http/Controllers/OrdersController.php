@@ -12,7 +12,7 @@ class OrdersController extends Controller
     public function view_orders()
     {
         $order =Orders::all();
-        return Inertia::render('Admin/Show_Products', [
+        return Inertia::render('Admin/View_Orders', [
             'products' => $order->map(function ($order) {
                 return [
                     'id' => $order->id,
@@ -27,7 +27,7 @@ class OrdersController extends Controller
     public function form_edit_order($id)
     {
         $order = Orders::find($id);
-        return Inertia::render('Admin/FormEdit_Product', [
+        return Inertia::render('Admin/FormEdit_Orders', [
             'order' => $order,
     
         ]);
@@ -51,7 +51,7 @@ class OrdersController extends Controller
     public function show_your_order(Request $request)
     {
       $search = Orders::where('name','LIKE','%$search%')->orWhere('id','LIKE','%$search%')->paginate(2);
-      return Inertia::render('Admin/FormEdit_Order', [
+      return Inertia::render('Admin/Show_Order', [
         'search' => $search,
 
     ]);
