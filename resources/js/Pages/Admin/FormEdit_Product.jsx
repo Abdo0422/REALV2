@@ -1,6 +1,6 @@
 import React from 'react';
 import { usePage, Head } from '@inertiajs/react';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import AuthenticatedLayout from '@/Layouts/Auth';
 
 
 
@@ -12,8 +12,10 @@ export default function Form_Product({auth}) {
 
 
     return (
-        <AuthenticatedLayout user={auth.user}>
-            <Head title="Form_Product" />
+      <>
+        <AuthenticatedLayout user={auth.user}
+        header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Products</h2>}>
+
             <h2 class="h2_style">Edit Product</h2>
 
 
@@ -26,23 +28,23 @@ export default function Form_Product({auth}) {
 
           <div>
             <label>Product Title:</label>
-                <input id="input_color"name="title" type="text" placeholder="Write a Title" defaultValue={ product.title } required="" />
+                <input id="input_color"name="title" type="text" class="input input-bordered input-primary w-full max-w-xs" placeholder="Write a Title" defaultValue={ product.title } required="" />
          </div>
 <div>
             <label>Product Description:</label>
-                <input id="input_color" name="description" type="text" placeholder="Write a Description" defaultValue={ product.description } required=""/>
+                <input id="input_color" name="description" type="text" class="input input-bordered input-primary w-full max-w-xs" placeholder="Write a Description" defaultValue={ product.description } required=""/>
 </div>
 <div>
             <label>Product Price:</label>
-                <input id="input_color" name="price" type="number" placeholder="Write a Price" defaultValue={ product.price } required=""/>
+                <input id="input_color" name="price" type="number" class="input input-bordered input-primary w-full max-w-xs" placeholder="Write a Price" defaultValue={ product.price } required=""/>
 </div>
 <div>
             <label>Product Quantity:</label>
-                <input id="input_color" name="quantity"type="number" min="0" placeholder="Write a Quantity" defaultValue={ product.quantity } required=""/>
+                <input id="input_color" name="quantity"type="number" class="input input-bordered input-primary w-full max-w-xs" min="0" placeholder="Write a Quantity" defaultValue={ product.quantity } required=""/>
 </div>
 <div>
             <label>Product Category:</label>
-                <select id="input_color" name="category" value="Choose" required="">
+                <select id="input_color" class="select select-primary w-full max-w-xs" style={{width :"150px" ,Bottom :"100px"}} name="category"  value="Choose" required="">
 
                   {
                       categories.map((category) => (
@@ -62,11 +64,11 @@ export default function Form_Product({auth}) {
               </div>
               <div>
             <label>Change Product Image:</label>
-                    <input type="file" name="image" id="image"/>
+                    <input type="file" class="file-input file-input-bordered file-input-primary w-full max-w-xs" name="image" id="image"/>
               </div>
 
 
-                <input type="submit" class="btn btn-primary" value="Update"/>
+                <input style={{ margin:"10px" }} type="submit" class="btn btn-primary" value="Update"/>
 
       </form>
 
@@ -74,8 +76,32 @@ export default function Form_Product({auth}) {
 
 
         </AuthenticatedLayout>
+        <style>{`
+        .div_center {
+            text-align: center;
+            padding-top: 40px;
+        }
 
+        .h2_style {
+            font-size: 40px;
+            padding-bottom: 40px;
+        }
 
+        #input_color {
+            color: black;
+        }
+        label{
+          display:inline-block;
+          width:200px;
+          padding-bottom: 30px;
+          text-align: left;
+          left:0;
+                }
+        #hidden{
+          display:none;
+        }
+        `}</style>
+</>
 
     )
 

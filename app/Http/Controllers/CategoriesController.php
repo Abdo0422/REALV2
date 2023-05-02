@@ -25,6 +25,7 @@ public function add_category(Request $request): RedirectResponse
     $categories = new Categories;
 
     $categories->name = $request->input("category","z");
+    $categories->category_image=$request->input('image');
     $categories->save();
 
     return redirect(route('categories.view'));

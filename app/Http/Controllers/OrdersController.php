@@ -2,64 +2,58 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Orders;
 use Illuminate\Http\Request;
-
-class OrdersController extends Controller
+use App\Models\Orders;
+use Inertia\Inertia;
+use Inertia\Response;
+use Illuminate\Http\RedirectResponse;
+class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function view_orders()
     {
-        //
+        $order =Orders::all();
+        return Inertia::render('Admin/Show_Products', [
+            'products' => $order->map(function ($order) {
+                return [
+                    'id' => $order->id,
+                    'PaymentMethod' => $order->PaymentMethod,
+                    'OrderDate' => $order->OrderDate,
+                    'DeliveryDate' => $order->DeliveryDate,
+                    'total' => $order->total,
+                    'status' => $order->status,
+                ];
+            })]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function form_edit_order($id)
     {
-        //
+        $order = Orders::find($id);
+        return Inertia::render('Admin/FormEdit_Product', [
+            'order' => $order,
+    
+        ]);
     }
+     
+    public function edit_order(Request $request,$id) {
+        $order = Orders::find($id);
+        $order->status = $request->status;
+        $order->save();
+        return redirect()->back()->with("message","Order Updated Successsfully");
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+      }
+
+    public function delete_order($id) : RedirectResponse
     {
-        //
+        $order = Orders::find($id);
+        $order->delete();
+        return redirect()->back()->with("message0","Order Deleted Successfully ");
+
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Orders $orders)
+    public function show_your_order(Request $request)
     {
-        //
-    }
+      $search = Orders::where('name','LIKE','%$search%')->orWhere('id','LIKE','%$search%')->paginate(2);
+      return Inertia::render('Admin/FormEdit_Order', [
+        'search' => $search,
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Orders $orders)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Orders $orders)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Orders $orders)
-    {
-        //
+    ]);
     }
 }
