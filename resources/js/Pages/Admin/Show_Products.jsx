@@ -34,7 +34,7 @@ export default function Show_Product({auth}) {
                                 <td>{ product.title }</td>
                                 <td>{ product.description }</td>
                                 <td>{ product.category }</td>
-                                <td>{ product.price }</td>
+                                <td>{ product.price }DH</td>
                                 <td>{ product.quantity }</td>
                                 <td>
                                 <a class="btn btn-outline" style={{ marginBottom:"15px" }} href={route('product.form_edit',product.id)}>Edit</a>
