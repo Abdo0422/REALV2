@@ -7,7 +7,7 @@ use App\Models\Orders;
 use Inertia\Inertia;
 use Inertia\Response;
 use Illuminate\Http\RedirectResponse;
-class OrderController extends Controller
+class OrdersController extends Controller
 {
     public function view_orders()
     {

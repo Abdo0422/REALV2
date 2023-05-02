@@ -3,6 +3,7 @@ use App\Http\Controllers\ChirpController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\OrdersController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -79,15 +80,15 @@ Route::post('/edit_product/{id}',[ProductsController::class,'edit_product'])
 
 
 
-Route::get('/view_orders',[OrderController::class,'view_orders'])->middleware('admin')
+Route::get('/view_orders',[OrdersController::class,'view_orders'])->middleware('admin')
 ->name('order.view');;
-Route::get('/delete_order/{id}',[OrderController::class,'delete_order'])->middleware('admin')
+Route::get('/delete_order/{id}',[OrdersController::class,'delete_order'])->middleware('admin')
 ->name('order.delete');;
-Route::get('/form_edit_order/{id}',[OrderController::class,'form_edit_order'])->middleware('admin')
+Route::get('/form_edit_order/{id}',[OrdersController::class,'form_edit_order'])->middleware('admin')
 ->name('order.formedit_add');;
-Route::post('/edit_order/{id}',[OrderController::class,'edit_order'])->middleware('admin')
+Route::post('/edit_order/{id}',[OrdersController::class,'edit_order'])->middleware('admin')
 ->name('order.edit');;
-Route::get('/show_your_order',[OrderController::class,'show_your_order'])->middleware('admin')
+Route::get('/show_your_order',[OrdersController::class,'show_your_order'])->middleware('admin')
 ->name('order.show');;
 
 
