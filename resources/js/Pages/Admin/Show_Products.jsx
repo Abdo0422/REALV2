@@ -13,6 +13,7 @@ export default function Show_Product({auth}) {
         <AuthenticatedLayout user={auth.user}
         header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Products</h2>}>
             <Head title="AdminCategories" />
+            <div style={{ textAlign:"center" }}>
             <h2 class="h2_style">Show all Product</h2>
             <table>
                     <thead>
@@ -70,7 +71,7 @@ export default function Show_Product({auth}) {
 
 
 
-
+</div>
 
 
 

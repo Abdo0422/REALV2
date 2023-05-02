@@ -15,7 +15,7 @@ export default function Form_Product({auth}) {
       <>
         <AuthenticatedLayout user={auth.user}
         header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Products</h2>}>
-
+<div style={{ textAlign:"center" }}>
             <h2 class="h2_style">Edit Product</h2>
 
 
@@ -71,7 +71,7 @@ export default function Form_Product({auth}) {
                 <input style={{ margin:"10px" }} type="submit" class="btn btn-primary" value="Update"/>
 
       </form>
-
+</div>
 
 
 

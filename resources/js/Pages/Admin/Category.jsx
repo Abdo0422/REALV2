@@ -28,7 +28,7 @@ export default function Category({auth}) {
 <>
 <AuthenticatedLayout user={auth.user}
         header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Categories</h2>}>
-
+<div style={{ textAlign:"center" }}>
                     <h1 className='h2_style'>Add Category</h1>
 
                     <form action={route('categories.add')} method="post" style={{marginLeft:"50px",paddingTop:"40px" }}>
@@ -97,7 +97,7 @@ export default function Category({auth}) {
 
 
                 </table>
-        
+        </div>
                 </AuthenticatedLayout>
                 <style>{`
         table {

@@ -13,7 +13,7 @@ export default function Form_Product({auth}) {
         <AuthenticatedLayout user={auth.user}
         header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Products</h2>}>
             <Head title="Form_Product" />
-
+            <div style={{ textAlign:"center" }}>
             <h2 className="h2_style">Add Product</h2>
             <form encType="multipart/form-data" action={route('product.add')} method="POST" >
             <label>Product Category:</label>
@@ -59,7 +59,7 @@ export default function Form_Product({auth}) {
 
       </form>
 
-
+</div>
         </AuthenticatedLayout>
         <style>{`
         .div_center {

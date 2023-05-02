@@ -1,9 +1,5 @@
 import { useState } from 'react';
-import ApplicationLogo from '@/Components/ApplicationLogo';
-import Dropdown from '@/Components/Dropdown';
-import NavLink from '@/Components/NavLink';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
-import { Link } from '@inertiajs/react';
+
 
 export default function Auth({ user, header, children }) {
 
@@ -64,7 +60,7 @@ export default function Auth({ user, header, children }) {
             Profile
           </a>
         </li>
-        <li><a href={route('logout')} method="post">Logout</a></li>
+        <li><a href={route('logout')} method="post" as="button">Logout</a></li>
       </ul>
     </div>
 </div>
@@ -72,6 +68,6 @@ export default function Auth({ user, header, children }) {
     <header className="bg-white shadow">
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">{header}</div>
     </header>
-)}<div style={{ backgroundColor:"yellow" }}>
-<main style={{ position:"absolute",right:"25%", textAlign: "center",alignItems :'center' ,alignContent:"center", backgroundColor:'white',borderRight: '1px lightgrey solid' ,borderLeft: '1px lightgrey solid' ,width:"50%",height:"100%"}}>{children}</main></div>
+)}
+<main style={{ position:"absolute",right:"25%",alignItems :'center' ,alignContent:"center", backgroundColor:'white',borderRight: '1px lightgrey solid' ,borderLeft: '1px lightgrey solid' ,width:"50%",height:"100%"}}>{children}</main>
     </>)}

@@ -15,7 +15,7 @@ export default function Form_Product({auth}) {
       <>
         <AuthenticatedLayout user={auth.user}
         header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Order</h2>}>
-
+<div style={{ textAlign:"center" }}>
             <h2 class="h2_style">Edit Order</h2>
 
 
@@ -41,7 +41,7 @@ export default function Form_Product({auth}) {
       </form>
 
 
-
+</div>
 
         </AuthenticatedLayout>
         <style>{`
