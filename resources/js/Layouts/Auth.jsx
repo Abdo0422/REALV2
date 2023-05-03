@@ -9,7 +9,7 @@ export default function Auth({ user, header, children }) {
 
     return ( 
         <>
-        <div class="navbar bg-base-100" style={{ backgroundColor:"white" }}>
+        <div class="navbar bg-base-100" >
    <div class="navbar-start">
     <div class="dropdown">
       <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -32,7 +32,7 @@ export default function Auth({ user, header, children }) {
       </ul>
     </div>
     <a href="/dashboard">
-         <img src="logo.png" alt="logo" width="100px" height="80px" />
+         <h1 className='' style={{fontWeight:"bolder",fontSize:"35px",letterSpacing:"5px",fontStyle:"italic"}}><span style={{color:"#5B06E5"}}>R</span>EAL</h1>
     </a>
   </div>
   <div class="navbar-center hidden lg:flex">
@@ -69,9 +69,9 @@ export default function Auth({ user, header, children }) {
     </div>
 </div>
 {header && (
-    <header className="bg-white shadow">
+    <header className=" shadow">
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">{header}</div>
     </header>
 )}<div style={{ backgroundColor:"yellow" }}>
-<main style={{ position:"absolute",right:"25%", textAlign: "center",alignItems :'center' ,alignContent:"center", backgroundColor:'white',borderRight: '1px lightgrey solid' ,borderLeft: '1px lightgrey solid' ,width:"50%",height:"100%"}}>{children}</main></div>
+<main style={{ position:"absolute", textAlign: "center",alignItems :'center' ,alignContent:"center",width:"100%",height:"100%"}}>{children}</main></div>
     </>)}

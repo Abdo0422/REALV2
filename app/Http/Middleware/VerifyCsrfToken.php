@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as Middleware;
 
-class VerifyCsrfToken extends Middleware
+class VerifyCsrfToken extends AdminMiddleware
 {
     /**
      * The URIs that should be excluded from CSRF verification.
@@ -14,7 +14,7 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         '/Admincategories/add',
         '/add_product',
-        '/edit_product/9'
+        '/edit_product/{id}'
     ];
 
 

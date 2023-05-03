@@ -14,7 +14,7 @@ export default function Form_Product({auth}) {
     return (
       <>
         <AuthenticatedLayout user={auth.user}
-        header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Order</h2>}>
+        header={<h2 className="font-semibold text-xl text-gray-800 leading-tight bg-info p-5 rounded-md">Order</h2>}>
 
             <h2 class="h2_style">Edit Order</h2>
 

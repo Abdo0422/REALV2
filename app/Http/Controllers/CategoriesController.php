@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Categories;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
+use App\Models\Products;
 use Inertia\Response;
 
 class CategoriesController extends Controller
@@ -39,5 +40,15 @@ public function delete_category($id)
     $categories->delete();
     return redirect()->back()->with('success', 'Category deleted successfully');
 }
+public function relative_product($id)
+    {
+        $products = Products::whereHas('category', function($query) use ($id) {
+            $query->where('id', $id);
+        })->get();
+
+        return Inertia::render('Admin/Relative', [
+            'products' => $products,
+        ]);
+    }
 }
 ?>

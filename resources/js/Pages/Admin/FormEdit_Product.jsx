@@ -14,7 +14,8 @@ export default function Form_Product({auth}) {
     return (
       <>
         <AuthenticatedLayout user={auth.user}
-        header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Products</h2>}>
+        header={<h2 className="font-semibold text-xl text-gray-800 leading-tight bg-primary p-5 rounded-md">Products</h2>}>
+          <base href="/public"></base>
 
             <h2 class="h2_style">Edit Product</h2>
 
@@ -42,24 +43,12 @@ export default function Form_Product({auth}) {
             <label>Product Quantity:</label>
                 <input id="input_color" name="quantity"type="number" class="input input-bordered input-primary w-full max-w-xs" min="0" placeholder="Write a Quantity" defaultValue={ product.quantity } required=""/>
 </div>
-<div>
-            <label>Product Category:</label>
-                <select id="input_color" class="select select-primary w-full max-w-xs" style={{width :"150px" ,Bottom :"100px"}} name="category"  value="Choose" required="">
 
-                  {
-                      categories.map((category) => (
-                        <option value={category.name }>{category.name }</option>
-
-                      ))
-                  }
-
-                  </select>
-              </div>
             <div>
             <label>Current Product Image:</label>
 
 
-            <img src={'products/product.png'}  height="100" width="100" alt="heelo"/><br></br>
+            <img src={'products/'+product.image}  height="200" width="130" style={{display:"block",margin:"auto"}} alt="heelo" name="image"/><br></br>
 
               </div>
               <div>

@@ -9,9 +9,10 @@ export default function View_Orders({ auth }) {
   return (
     <>
     <AuthenticatedLayout user={auth.user}
-        header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Orders</h2>}>
+        header={<h2 className="font-semibold text-xl text-gray-800 leading-tight bg-primary p-5 rounded-md">Orders</h2>}>
       <Head title="Orders" />
-      <table>
+      <div className="overflow-x-auto">
+              <table className="table table-zebra w-full">
         <thead>
           <tr>
             <th>Order ID</th>
@@ -54,6 +55,7 @@ export default function View_Orders({ auth }) {
             </tbody>
           ))}
       </table>
+      </div>
     </AuthenticatedLayout>
     <style>{`
         .div_center {
@@ -70,58 +72,7 @@ export default function View_Orders({ auth }) {
           color: black;
       }
 
-      table {
-          margin: auto;
-          width: 70%;
-          text-align: center;
-          border-collapse: collapse;
-          overflow: hidden;
-          margin-top: 50px;
-          box-shadow: 0 0 20px;
-          rgba(0, 0, 0, 0.1);
-      }
-
-      th,
-      td {
-          padding: 15px;
-          background-color: rgba(255, 255, 255, 0.2);
-          color: black;
-      }
-
-      th {
-          text-align: left;
-      }
-
-      thead {
-          th {
-              background-color: #55608f;
-          }
-      }
-
-      tbody {
-          tr {
-              &:hover {
-                  background-color: rgba(255, 255, 255, 0.3);
-              }
-          }
-
-          td {
-              position: relative;
-
-              &:hover {
-                  &:before {
-                      content: "";
-                      position: absolute;
-                      left: 0;
-                      right: 0;
-                      top: -9999px;
-                      bottom: -9999px;
-                      background-color: rgba(255, 255, 255, 0.2);
-                      z-index: -1;
-                  }
-              }
-          }
-      }
+      
         `}</style>
 </>
 

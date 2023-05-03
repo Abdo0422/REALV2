@@ -6,14 +6,9 @@ import { InertiaLink } from '@inertiajs/inertia-react';
 
 export default function Show_Product({auth}) {
     const { products  } = usePage().props;
-
-
     return (
-        <>
-        <AuthenticatedLayout user={auth.user}
-        header={<h2 className="font-semibold text-xl text-gray-800 leading-tight bg-warning p-5 rounded-md">Products</h2>}>
-            <Head title="AdminCategories" />
-            <h2 class="h2_style">Show all Product</h2>
+        <AuthenticatedLayout user={auth.user}>
+            <base href="/public"></base>
             <div className="overflow-x-auto">
                 <table className="table table-zebra w-full">
                     <thead>
@@ -68,33 +63,10 @@ export default function Show_Product({auth}) {
 
 
 
+        </AuthenticatedLayout>
 
 
-
-
-            </AuthenticatedLayout>
-            <style>{`
-
-.h2_style {
-    font-size: 40px;
-    padding-bottom: 40px;
-}
-
-}
-            `}</style>
-</>
-
-
-
-
-
-        )
-
-
-
-
-
-
+    )
 
 
 

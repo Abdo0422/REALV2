@@ -44,6 +44,10 @@ Route::get('/Admincategories', [CategoriesController::class, 'view_categories'])
 ->middleware('admin')
 ->name('categories.view');
 
+Route::get('/Admincategories/relative/{id}', [CategoriesController::class, 'relative_product'])
+->middleware('admin')
+->name('categories.relative');
+
 Route::post('/Admincategories/add', [CategoriesController::class, 'add_category'])
 ->middleware('admin')
 ->name('categories.add');

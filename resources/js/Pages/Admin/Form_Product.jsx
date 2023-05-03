@@ -11,7 +11,7 @@ export default function Form_Product({auth}) {
     return (
         <>
         <AuthenticatedLayout user={auth.user}
-        header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Products</h2>}>
+        header={<h2 className="font-semibold text-xl text-gray-800 leading-tight bg-warning p-5 rounded-md">Products</h2>}>
             <Head title="Form_Product" />
 
             <h2 className="h2_style">Add Product</h2>
@@ -49,13 +49,13 @@ export default function Form_Product({auth}) {
 
             <label>Product Image:</label>
 
-            <input type="file" className="file-input file-input-bordered file-input-primary w-full max-w-xs" name="image" id="image"/>
+            <input type="file" className="file-input file-input-bordered file-input-primary w-full max-w-xs" name="image" id="image"/><br></br><br></br>
 
 
 
 
 
-            <input type="submit" className="btn btn-primary" style={{position:"absolute",left:"50%",bottom:"35%" }} value="Add Product"/>
+            <input type="submit" className="btn btn-primary"  value="Add Product"/>
 
       </form>
 

@@ -74,9 +74,11 @@ class ProductsController extends Controller
         $products->description=$request->description;
         $products->price=$request->price;
         $products->quantity=$request->quantity;
-        $filename = $request->image->getClientOriginalName();
-        $path = $request->image->storeAs('products', $filename, 'public');
-        $products->image = $filename;
+        if (strlen($request->file('image')) > 0) {
+            $filename = $request->file('image')->getClientOriginalName();
+            $path = $request->file('image')->storeAs('products', $filename, 'public');
+            $products->image = $filename;
+        };
         $products->save();
       return redirect(route('products.show'));
     }

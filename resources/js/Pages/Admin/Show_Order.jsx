@@ -8,9 +8,10 @@ export default function View_Orders({ auth }) {
 
   return (
     <AuthenticatedLayout user={auth.user}
-        header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Orders</h2>}>
+        header={<h2 className="font-semibold text-xl text-gray-800 leading-tight bg-secondary p-5 rounded-md">Orders</h2>}>
       <Head title="Orders" />
-      <table>
+      <div className="overflow-x-auto">
+              <table className="table table-zebra w-full">
         <thead>
           <tr>
             <th>Order ID</th>
@@ -53,6 +54,7 @@ export default function View_Orders({ auth }) {
             </tbody>
           ))}
       </table>
+      </div>
     </AuthenticatedLayout>
   );
 }
