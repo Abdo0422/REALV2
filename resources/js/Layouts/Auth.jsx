@@ -1,9 +1,5 @@
 import { useState } from 'react';
-import ApplicationLogo from '@/Components/ApplicationLogo';
-import Dropdown from '@/Components/Dropdown';
-import NavLink from '@/Components/NavLink';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
-import { Link } from '@inertiajs/react';
+
 
 export default function Auth({ user, header, children }) {
 
@@ -64,7 +60,7 @@ export default function Auth({ user, header, children }) {
             Profile
           </a>
         </li>
-        <li><a href={route('logout')} method="post">Logout</a></li>
+        <li><a href={route('logout')} method="post" as="button">Logout</a></li>
       </ul>
     </div>
 </div>

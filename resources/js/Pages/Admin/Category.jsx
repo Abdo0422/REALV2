@@ -27,7 +27,7 @@ export default function Category({auth}) {
     return (
 <>
 <AuthenticatedLayout user={auth.user}
-        header={<h2 className="font-semibold text-xl text-gray-800 leading-tight bg-success p-5 rounded-md">Categories</h2>}>
+        header={<h2 className="font-semibold text-xl text-gray-800 leading-tight rounded-md bg-primary p-5">Categories</h2>}>
 
                     <h1 className='h2_style'>Add Category</h1>
                 <div style={{display:"flex"}}>
